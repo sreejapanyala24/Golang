@@ -14,7 +14,6 @@ func main() {
 		{1, "Sreeja", 25},
 		{2, "Bharath", 30},
 		{3, "Sai", 28},
-		{4, "Raj", 27},
 	}
 
 	for _, c := range customers {
