@@ -3,27 +3,28 @@ package main
 import "fmt"
 
 type customer struct {
-	ID   int
-	Name string
-	Age  int
+	ID        int
+	Name      string
+	Age       int
+	IsLoyalty bool
 }
 
 func main() {
 	customers := []customer{
-		{1, "Sreeja", 25},
-		{2, "Bharath", 12},
-		{3, "Sai", 28},
-		{4, "Raj", 10},
-		{5, "Ravi", 18},
+		{1, "Sreeja", 25, true},
+		{2, "Bharath", 12, false},
+		{3, "Sai", 28, true},
+		{4, "Raj", 10, false},
+		{5, "Ravi", 18, true},
 	}
-	fmt.Printf("%-5s %-10s %-5s %-40s\n", "ID", "Name", "Age", "Status")
+	actualTicketPrice := 15.0
+	fmt.Printf("%-5s %-10s %-5s %-45s %-10s\n", "ID", "Name", "Age", "Status", "TicketPrice")
 	for _, c := range customers {
-		if c.Age < 12 {
-			fmt.Printf("%-5d %-10s %-5d %-40s\n", c.ID, c.Name, c.Age, "Not Allowed")
-		} else if c.Age >= 12 && c.Age < 18 {
-			fmt.Printf("%-5d %-10s %-5d %-40s\n", c.ID, c.Name, c.Age, "Allowed but must come with someone above 21")
+		status, TicketPrice := calculateTicketPrice(c, actualTicketPrice)
+		if TicketPrice == 0 {
+			fmt.Printf("%-5d %-10s %-5d %-45s %-10s\n", c.ID, c.Name, c.Age, status, "NA")
 		} else {
-			fmt.Printf("%-5d %-10s %-5d %-40s\n", c.ID, c.Name, c.Age, "Allowed")
+			fmt.Printf("%-5d %-10s %-5d %-45s %-10.2f\n", c.ID, c.Name, c.Age, status, TicketPrice)
 		}
 	}
 
