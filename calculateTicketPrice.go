@@ -13,7 +13,7 @@ func calculateTicketPrice(c customer, actualTicketPrice float64) (string, float6
 		TicketPrice = TicketPrice - (TicketPrice * 0.10)
 	}
 	if c.Age >= 12 && c.Age < 18 {
-		return "Allowed but must come with someone above 21", TicketPrice
+		return "Allowed but must come with someone above 18", TicketPrice
 	}
 	return "Allowed", TicketPrice
 }
