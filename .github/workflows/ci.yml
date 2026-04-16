@@ -16,6 +16,11 @@ jobs:
         with:
           go-version: 'stable'
 
+      - name: Print masked secret
+        run: echo "The secret is: $SAMPLE_KEY"
+        env:
+          SAMPLE_KEY: ${{ secrets.SAMPLE_KEY }}
+
       - name: Build
         run: go build ./...
 
