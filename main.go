@@ -21,21 +21,26 @@ func main() {
 			{2, "Bharath", 12, false},
 			{3, "Sai", 28, true},
 			{4, "Raj", 10, false},
-			{5, "Ravi", 18, true},
+			{5, "Ravi", 15, true},
 		}
 
 		actualTicketPrice := 15.0
 
-		fmt.Fprintf(w, "%-5s %-10s %-5s %-45s %-10s\n", "ID", "Name", "Age", "Status", "TicketPrice")
+		fmt.Fprintf(w, "%-5s %-10s %-5s %-10s %-45s %-20s %-42s %-15s\n",
+			"ID", "Name", "Age", "IsLoyalty", "Status", "ActualTicketPrice", "OfferApplied", "FinalTicketPrice")
 
 		for _, c := range customers {
-			status, TicketPrice := calculateTicketPrice(c, actualTicketPrice)
-			if TicketPrice == 0 {
-				fmt.Fprintf(w, "%-5d %-10s %-5d %-45s %-10s\n", c.ID, c.Name, c.Age, status, "NA")
+			status, finalTicketPrice, offer := calculateTicketPrice(c, actualTicketPrice)
+
+			if finalTicketPrice == 0 {
+				fmt.Fprintf(w, "%-5d %-10s %-5d %-10v %-45s $%-19.2f %-42s %-15s\n",
+					c.ID, c.Name, c.Age, c.IsLoyalty, status, actualTicketPrice, offer, "NA")
 			} else {
-				fmt.Fprintf(w, "%-5d %-10s %-5d %-45s %-10.2f\n", c.ID, c.Name, c.Age, status, TicketPrice)
+				fmt.Fprintf(w, "%-5d %-10s %-5d %-10v %-45s $%-19.2f %-42s $%-14.2f\n",
+					c.ID, c.Name, c.Age, c.IsLoyalty, status, actualTicketPrice, offer, finalTicketPrice)
 			}
 		}
+
 	})
 
 	fmt.Println("Server running on port 9090...")
