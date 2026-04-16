@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-)
+
 
 type customer struct {
 	ID        int
