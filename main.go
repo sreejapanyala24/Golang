@@ -42,7 +42,6 @@ func main() {
 		}
 
 	})
-
 	fmt.Println("Server running on port 9090...")
 	http.ListenAndServe(":9090", nil)
 }
