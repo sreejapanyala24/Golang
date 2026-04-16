@@ -17,7 +17,7 @@ jobs:
           go-version: 'stable'
 
       - name: Print masked secret
-        run: echo \"The secret is: $SAMPLE_KEY\"
+        run: echo "The secret is:$SAMPLE_KEY"
         env:
           SAMPLE_KEY: ${{ secrets.SAMPLE_KEY }}
 
