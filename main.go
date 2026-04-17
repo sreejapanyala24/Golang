@@ -22,7 +22,7 @@ func main() {
 			{3, "Sai", 28, true},
 			{4, "Raj", 10, false},
 			{5, "Ravi", 15, true},
-			{6, "Sarayu", 5, false},
+			{6, "Sarayu", 8, false},
 		}
 
 		actualTicketPrice := 15.0
